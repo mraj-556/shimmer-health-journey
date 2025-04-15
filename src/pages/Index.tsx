@@ -1,8 +1,9 @@
 
 import { motion } from "framer-motion";
-import { ArrowRight, Activity, TestTube, Shield, Heart } from "lucide-react";
+import { ArrowRight, Activity, AlertCircle, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 
 const Index = () => {
   const fadeIn = {
@@ -12,196 +13,220 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-blue-950 to-blue-900 text-white">
       {/* Hero Section */}
-      <motion.section 
-        className="container mx-auto px-4 pt-20 pb-16 text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <motion.h1 
-          className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text"
-          {...fadeIn}
+      <div className="container mx-auto px-4 pt-20 pb-32 relative">
+        <motion.div 
+          className="max-w-2xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
         >
-          Understanding Cardiovascular Health
-        </motion.h1>
-        <motion.p 
-          className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
-          Take control of your heart health with advanced diagnostics and personalized care plans.
-        </motion.p>
-      </motion.section>
-
-      {/* Disease Information */}
-      <motion.section 
-        className="py-16 bg-white"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2 
-            className="text-3xl font-bold mb-8 text-center text-slate-800"
+          <motion.span 
+            className="inline-block px-4 py-2 bg-blue-800 rounded-full text-sm mb-6"
             {...fadeIn}
           >
-            Understanding Cardiovascular Disease
-          </motion.h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.div 
-              className="space-y-4"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <p className="text-slate-600">
-                Cardiovascular disease affects millions globally, but early detection and proper management can significantly improve outcomes. Our comprehensive approach combines cutting-edge technology with personalized care.
-              </p>
-            </motion.div>
-            <motion.div 
-              className="bg-blue-50 rounded-2xl p-6"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-            >
-              <h3 className="text-xl font-semibold mb-4 text-blue-800">Key Statistics</h3>
-              <ul className="space-y-3 text-slate-700">
-                <li className="flex items-center gap-2">
-                  <Heart className="text-blue-500" size={20} />
-                  <span>Affects 1 in 4 adults globally</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Activity className="text-blue-500" size={20} />
-                  <span>80% of cases are preventable</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Shield className="text-blue-500" size={20} />
-                  <span>Early detection improves outcomes by 70%</span>
-                </li>
-              </ul>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
+            ADVANCED DIAGNOSTICS
+          </motion.span>
+          
+          <motion.h1 
+            className="text-5xl md:text-6xl font-bold mb-6"
+            {...fadeIn}
+          >
+            Early Detection For{" "}
+            <span className="text-blue-400">Diabetes Risk</span>
+          </motion.h1>
+          
+          <motion.p 
+            className="text-xl text-gray-300 mb-8 max-w-xl"
+            {...fadeIn}
+          >
+            Revolutionary diagnostic solutions that detect early biomarkers with 99.8% accuracy, giving you peace of mind and potentially life-saving early intervention.
+          </motion.p>
 
-      {/* Tests Section */}
-      <motion.section 
-        className="py-16 bg-gradient-to-b from-white to-blue-50"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center text-slate-800">Our Advanced Tests</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Cardiac MRI",
-                description: "High-resolution imaging for detailed heart structure analysis",
-                icon: TestTube
-              },
-              {
-                title: "ECG Monitoring",
-                description: "24/7 heart rhythm monitoring with AI-powered analysis",
-                icon: Activity
-              },
-              {
-                title: "Blood Biomarkers",
-                description: "Comprehensive blood testing for early disease detection",
-                icon: Heart
-              }
-            ].map((test, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-              >
-                <Card className="p-6 hover:shadow-lg transition-shadow duration-300">
-                  <test.icon className="w-12 h-12 text-blue-500 mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">{test.title}</h3>
-                  <p className="text-slate-600">{test.description}</p>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Features Section */}
-      <motion.section 
-        className="py-16 bg-white"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center text-slate-800">Why Choose Us</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                title: "Advanced Technology",
-                description: "State-of-the-art diagnostic equipment and AI-powered analysis"
-              },
-              {
-                title: "Expert Team",
-                description: "Experienced healthcare professionals dedicated to your care"
-              },
-              {
-                title: "Personalized Care",
-                description: "Customized treatment plans tailored to your needs"
-              },
-              {
-                title: "24/7 Support",
-                description: "Round-the-clock assistance and monitoring"
-              }
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                className="bg-blue-50 rounded-lg p-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-slate-600">{feature.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* CTA Section */}
-      <motion.section 
-        className="py-20 bg-gradient-to-r from-blue-600 to-indigo-600 text-white"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Take Control of Your Heart Health?</h2>
-          <p className="text-xl mb-8 text-blue-100">Schedule your comprehensive cardiac assessment today.</p>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <motion.div 
+            className="flex flex-wrap gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
           >
             <Button 
-              className="bg-white text-blue-600 hover:bg-blue-50 text-lg px-8 py-6"
-              onClick={() => {/* Add navigation logic */}}
+              size="lg"
+              className="bg-blue-600 hover:bg-blue-700"
             >
-              Get Started Now <ArrowRight className="ml-2" />
+              Explore Our Tests <ArrowRight className="ml-2" />
+            </Button>
+            <Button 
+              size="lg"
+              variant="outline"
+              className="border-white/20 hover:bg-white/10"
+            >
+              Learn About Risks
             </Button>
           </motion.div>
+
+          {/* Stats */}
+          <motion.div 
+            className="flex gap-12 mt-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+          >
+            <div>
+              <h3 className="text-4xl font-bold text-blue-400">99.8%</h3>
+              <p className="text-gray-400">Accuracy Rate</p>
+            </div>
+            <div>
+              <h3 className="text-4xl font-bold text-blue-400">24h</h3>
+              <p className="text-gray-400">Result Time</p>
+            </div>
+            <div>
+              <h3 className="text-4xl font-bold text-blue-400">5+</h3>
+              <p className="text-gray-400">Biomarkers</p>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Health Report Card */}
+        <motion.div
+          className="absolute top-20 right-4 md:right-20 w-full max-w-md"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.8 }}
+        >
+          <Card className="p-6 bg-blue-800/40 backdrop-blur border-blue-700/50">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-semibold">Cardiac Health Report</h3>
+              <Heart className="text-blue-400" />
+            </div>
+            <p className="text-gray-300 mb-4">Comprehensive analysis</p>
+            <div className="space-y-4 mb-6">
+              <Progress value={80} className="h-2 bg-blue-900/50" />
+              <Progress value={65} className="h-2 bg-blue-900/50" />
+              <Progress value={45} className="h-2 bg-blue-900/50" />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <p className="text-gray-300">Cholesterol</p>
+                <p className="text-lg font-semibold">185 mg/dL</p>
+              </div>
+              <div>
+                <p className="text-gray-300">Blood Pressure</p>
+                <p className="text-lg font-semibold">118/76 mmHg</p>
+              </div>
+              <div>
+                <p className="text-gray-300">Troponin I</p>
+                <p className="text-lg font-semibold">0.012 ng/mL</p>
+              </div>
+              <div>
+                <p className="text-gray-300">BNP</p>
+                <p className="text-lg font-semibold">42 pg/mL</p>
+              </div>
+            </div>
+          </Card>
+        </motion.div>
+      </div>
+
+      {/* Disease Info Section */}
+      <div className="bg-white text-gray-900 py-20 rounded-t-[3rem]">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="text-blue-600 text-sm font-medium">UNDERSTANDING THE RISK</span>
+            <h2 className="text-3xl font-bold mt-2">Disease Info</h2>
+            <p className="text-gray-600 mt-2">Understanding cardiac disease is the first step toward prevention and early intervention.</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <Card className="p-6">
+                <div className="flex gap-4">
+                  <Activity className="text-blue-600" size={24} />
+                  <div>
+                    <h3 className="font-semibold mb-2">What is Cardiac Disease?</h3>
+                    <p className="text-gray-600">Cardiac disease encompasses various heart conditions affecting heart function and blood flow. It remains the leading cause of death worldwide.</p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="p-6">
+                <div className="flex gap-4">
+                  <AlertCircle className="text-red-500" size={24} />
+                  <div>
+                    <h3 className="font-semibold mb-2">Common Risk Factors</h3>
+                    <ul className="space-y-2 text-gray-600">
+                      <li className="flex items-center gap-2">
+                        <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                        High blood pressure and cholesterol
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                        Smoking and excessive alcohol consumption
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                        Diabetes and obesity
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                        Family history and lack of physical activity
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div className="relative">
+              <Card className="p-6 bg-gray-900 text-white h-full">
+                <h3 className="text-xl font-semibold mb-6">Cardiac Disease in Numbers</h3>
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <p className="text-4xl font-bold text-blue-400">17</p>
+                    <p className="text-gray-400">Million deaths yearly</p>
+                  </div>
+                  <div>
+                    <p className="text-4xl font-bold text-blue-400">80</p>
+                    <p className="text-gray-400">Percent preventable</p>
+                  </div>
+                  <div>
+                    <p className="text-4xl font-bold text-blue-400">32</p>
+                    <p className="text-gray-400">Percent of all deaths</p>
+                  </div>
+                  <div>
+                    <p className="text-4xl font-bold text-blue-400">85</p>
+                    <p className="text-gray-400">Percent show early signs</p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </div>
+
+          {/* Statistics Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-12">
+            <Card className="p-6 bg-blue-600 text-white">
+              <p className="text-3xl font-bold">75</p>
+              <p className="text-sm text-blue-100">Million Americans at risk</p>
+            </Card>
+            <Card className="p-6 bg-red-500 text-white">
+              <p className="text-3xl font-bold">65</p>
+              <p className="text-sm text-red-100">Percent show no symptoms</p>
+            </Card>
+            <Card className="p-6 bg-green-500 text-white">
+              <p className="text-3xl font-bold">90</p>
+              <p className="text-sm text-green-100">Percent testing accuracy</p>
+            </Card>
+            <Card className="p-6 bg-purple-500 text-white">
+              <p className="text-3xl font-bold">48</p>
+              <p className="text-sm text-purple-100">Hour result turnaround</p>
+            </Card>
+          </div>
         </div>
-      </motion.section>
+      </div>
     </div>
   );
 };
